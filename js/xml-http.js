@@ -33,3 +33,9 @@ btn.addEventListener("click", () => {
     
     xhr.send()
 })
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then((response) => response.json())
+  .then((json) => console.log(json))
+//   .catch(err => console.log(err))
+//   .finally(() => setLoading(false))

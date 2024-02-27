@@ -1,8 +1,11 @@
 //c22c7820
 
 const getMovie = async (title) => {
+    // document.getElementById("loading").style.display="block"
     const fetchData = await fetch(`http://www.omdbapi.com/?apikey=c22c7820&t=${title}`)
     const resp = await fetchData.json()
+
+    // document.getElementById("loading").style.display="none"
 
     console.log(resp)
 }
@@ -21,14 +24,15 @@ const searchMovie = async (title, type, year, page = 1) => {
                 `&y=${year}` 
             : 
                 ""
-        }&page=${page}`
-        console.log(url)
+        }&page=${page}`;
         const searchedData = await fetch(url)
         const resp = await searchedData.json()
 
         console.log(resp)
+        return resp
     } else {
-        console.warn("Debes enviar un titulo como parametro")
+        // console.warn("Debes enviar un titulo como parametro")
+        throw new Error("Debes enviar un titulo como parametro")
     }
 }
 
@@ -56,4 +60,4 @@ const login = async (user, pass) => {
     console.log(resp)
 }
 
-login("ClubSeed", "Elmo123")
+// login("ClubSeed", "Elmo123")
